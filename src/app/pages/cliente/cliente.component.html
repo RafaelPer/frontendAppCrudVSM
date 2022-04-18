@@ -1,0 +1,86 @@
+<div class="container" style="margin-top: 10px;">
+    <div class="card">
+      <h3 class="card-header">Lista de Clientes</h3>
+      <div class="card-body">
+        <button type="button" class="btn btn-primary btn-sm" (click)="atualizarLista()" style="margin: 10px;">Atualizar Lista</button>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF/CNPJ</th>
+                <th scope="col">Cliente Desativado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of clientes">
+                <td>{{c.clienteIdPk}}</td>
+                <td>{{c.clienteNome}}</td>
+                <td>{{c.clienteCPFCNPJ}}</td>
+                <td>{{c.clienteDesativado == null ? '' : c.clienteDesativado == true ? 'SIM' : 'NÃO'}}</td>
+                <td>
+                  <button type="button" class="btn btn-warning btn-sm" style="margin: 10px;" [disabled] = "c.clienteDesativado == true ? true : false" [routerLink]="['/updateCliente', c.clienteIdPk]">Editar</button>
+                  <button type="button" class="btn btn-dark btn-sm ml-1" (click)="desativarCliente(c)">Ativar / Desativar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  
+    <div class="card" style="margin-top: 10px;">
+        <h3 class="card-header">Adicionar Cliente</h3>
+        <div class="card-body">
+            <form id="add-form" (ngSubmit)="saveCliente(clienteCriarForm)" #clienteCriarForm="ngForm" novalidate>
+                <div class="form-row row" style="margin-bottom: 40px; margin-top: 40px;">
+                    <h2>DADOS PESSOAIS</h2>
+                    <div class="form-group col-md-4">
+                        <label for="idClienteCPFCNPJ">CPF/CNPJ</label>
+                        <input type="text" class="form-control" id="idClienteCPFCNPJ" name="nameClienteCPFCNPJ" placeholder="" ngModel>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="idClienteNome">Nome</label>
+                        <input type="text" class="form-control" id="idClienteNome" name="nameClienteNome" placeholder="" ngModel>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="idClienteTelefone">Telefone/Celular</label>
+                        <input type="text" class="form-control" id="idClienteTelefone" name="nameClienteTelefone" placeholder="" ngModel>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="idClienteTelefone">Email</label>
+                        <input type="text" class="form-control" id="idClienteEmail" name="nameClienteEmail" placeholder="" ngModel>
+                    </div>
+                </div>
+                <div class="form-row row" style="margin-bottom: 10px;">
+                    <h2>ENDEREÇO</h2>
+                    <div class="form-group col-md-4">
+                        <label for="idClienteEnderecoLogradouro">Logradouro</label>
+                        <input type="text" class="form-control" id="idClienteEnderecoLogradouro" name="nameClienteEnderecoLogradouro" placeholder="" ngModel>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label for="idClienteEnderecoNumero">Numero</label>
+                        <input type="text" class="form-control" id="idClienteEnderecoNumero" name="nameClienteEnderecoNumero" placeholder="" ngModel>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="idClienteEnderecoBairro">Bairro</label>
+                        <input type="text" class="form-control" id="idClienteEnderecoBairro" name="nameClienteEnderecoBairro" placeholder="" ngModel>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="idCidadeNome">Cidade</label>
+                        <select id="idCidadeNome" name="nameCidadeNome" class="form-control" ngModel>
+                            <option selected value="">Escolha uma Cidade</option>
+                            <option *ngFor="let ci of cidades" value="{{ci.cidadeIdPk}}">{{ci.cidadeNome}} - {{ci.cidadeUf}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="idClienteEnderecoCep">CEP</label>
+                        <input type="text" class="form-control" id="idClienteEnderecoCep" name="nameClienteEnderecoCep" placeholder="" ngModel>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Salvar</button>
+                <button type="reset" class="btn btn-secondary" (click)="cleanForm(clienteCriarForm)">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+</div>

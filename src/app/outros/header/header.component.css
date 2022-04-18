@@ -1,0 +1,9 @@
+.hover-nav:hover{
+    background-color: #D1BEE3;
+    border-radius: 7px;
+    transition: 1s;
+}
+
+.hover-nav{
+    padding: 3px;
+}
