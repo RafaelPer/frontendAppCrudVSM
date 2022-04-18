@@ -19,7 +19,7 @@
                 <td>{{ci.cidadeUf}}</td>
                 <td>{{ci.cidadeDesativada == null ? '' : ci.cidadeDesativada == true ? 'SIM' : 'NÃO'}}</td>
                 <td>
-                  <!-- <button type="button" class="btn btn-warning btn-sm" style="margin: 10px;" [disabled] = "ci.cidadeDesativada == true ? true : false" [routerLink]="['/updateCliente', c.clienteIdPk]">Editar</button> -->
+                  <button type="button" class="btn btn-warning btn-sm" style="margin: 10px;" [disabled] = "ci.cidadeDesativada == true ? true : false" [routerLink]="['/updateCidade', ci.cidadeIdPk]">Editar</button>
                   <!-- <button type="button" class="btn btn-dark btn-sm ml-1" (click)="desativarCliente(c)">Ativar / Desativar</button> -->
                 </td>
               </tr>
@@ -28,59 +28,24 @@
       </div>
     </div>
   
-    <!-- <div class="card" style="margin-top: 10px;">
-        <h5 class="card-header">Adicionar Cliente</h5>
+    <div class="card" style="margin-top: 10px;">
+        <h3 class="card-header">Adicionar Cidade</h3>
         <div class="card-body">
-            <form id="add-form" (ngSubmit)="saveCliente(clienteCriarForm)" #clienteCriarForm="ngForm" novalidate>
+            <form id="add-form" (ngSubmit)="criarCidades(cidadeCriarForm)" #cidadeCriarForm="ngForm" novalidate>
                 <div class="form-row row" style="margin-bottom: 40px; margin-top: 40px;">
-                    <h2>DADOS PESSOAIS</h2>
                     <div class="form-group col-md-4">
-                        <label for="idClienteCPFCNPJ">CPF/CNPJ</label>
-                        <input type="text" class="form-control" id="idClienteCPFCNPJ" name="nameClienteCPFCNPJ" placeholder="" ngModel>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="idClienteNome">Nome</label>
-                        <input type="text" class="form-control" id="idClienteNome" name="nameClienteNome" placeholder="" ngModel>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="idClienteTelefone">Telefone/Celular</label>
-                        <input type="text" class="form-control" id="idClienteTelefone" name="nameClienteTelefone" placeholder="" ngModel>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="idClienteTelefone">Email</label>
-                        <input type="text" class="form-control" id="idClienteEmail" name="nameClienteEmail" placeholder="" ngModel>
-                    </div>
-                </div>
-                <div class="form-row row" style="margin-bottom: 10px;">
-                    <h2>ENDEREÇO</h2>
-                    <div class="form-group col-md-4">
-                        <label for="idClienteEnderecoLogradouro">Logradouro</label>
-                        <input type="text" class="form-control" id="idClienteEnderecoLogradouro" name="nameClienteEnderecoLogradouro" placeholder="" ngModel>
-                    </div>
-                    <div class="form-group col-md-1">
-                        <label for="idClienteEnderecoNumero">Numero</label>
-                        <input type="text" class="form-control" id="idClienteEnderecoNumero" name="nameClienteEnderecoNumero" placeholder="" ngModel>
+                        <label for="idCidadeNome">Nome da Cidade</label>
+                        <input type="text" class="form-control" id="idCidadeNome" name="nameCidadeNome" placeholder="" ngModel>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="idClienteEnderecoBairro">Bairro</label>
-                        <input type="text" class="form-control" id="idClienteEnderecoBairro" name="nameClienteEnderecoBairro" placeholder="" ngModel>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="idCidadeNome">Cidade</label>
-                        <select id="idCidadeNome" name="nameCidadeNome" class="form-control" ngModel>
-                            <option selected value="">Escolha uma Cidade</option>
-                            <option *ngFor="let ci of cidades" value="{{ci.cidadeIdPk}}">{{ci.cidadeNome}} - {{ci.cidadeUf}}</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="idClienteEnderecoCep">CEP</label>
-                        <input type="text" class="form-control" id="idClienteEnderecoCep" name="nameClienteEnderecoCep" placeholder="" ngModel>
+                        <label for="idCidadeUf">UF da Cidade</label>
+                        <input type="text" class="form-control" id="idCidadeUf" name="nameCidadeUf" placeholder="" ngModel>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Salvar</button>
-                <button type="reset" class="btn btn-secondary" (click)="cleanForm(clienteCriarForm)">Cancelar</button>
+                <button type="reset" class="btn btn-secondary" (click)="cleanForm(cidadeCriarForm)">Cancelar</button>
             </form>
         </div>
-    </div> -->
+    </div>
 
 </div>

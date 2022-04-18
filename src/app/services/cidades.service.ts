@@ -15,7 +15,7 @@ export class CidadesService {
   constructor(private httpClient: HttpClient) { }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json',"Access-Control-Allow-Credencials": "true", "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "*", "Access-Control-Allow-Headers": "*"})
   }
 
 
@@ -25,6 +25,14 @@ export class CidadesService {
         retry(2),
         catchError(this.handleError)
       );
+  }
+
+  findAllCidadesAtivadas(): Observable<Cidade[]>{
+    return this.httpClient.get<Cidade[]>(this.url + 'getAllCidadesAtivadas')
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
   }
 
   findCidadeAtivadaById(id: number): Observable<Cidade>{
@@ -43,8 +51,8 @@ export class CidadesService {
       )
   }
   
-  updateCidade(cidade: Cidade): Observable<Cidade> {
-    return this.httpClient.put<Cidade>(this.url + 'updateCidadeById/' + cidade.cidadeIdPk, JSON.stringify(cidade), this.httpOptions)
+  updateCidade(id: number, cidade: Cidade): Observable<Cidade> {
+    return this.httpClient.put<Cidade>(this.url + 'updateCidadeById/' + id, JSON.stringify(cidade), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)

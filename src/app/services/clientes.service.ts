@@ -15,7 +15,7 @@ export class ClientesService {
   constructor(private httpClient: HttpClient) { }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json',"Access-Control-Allow-Credencials": "true", "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "*", "Access-Control-Allow-Headers": "*"})
   }
 
   findAllClientes(): Observable<Cliente[]>{

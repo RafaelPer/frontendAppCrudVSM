@@ -40,7 +40,7 @@ export class ClienteComponent implements OnInit {
   }
 
   getCidades() {
-    this.cidService.findAllCidades().subscribe((cid: Cidade[]) => {
+    this.cidService.findAllCidadesAtivadas().subscribe((cid: Cidade[]) => {
       this.cidades = cid;
     });
   }

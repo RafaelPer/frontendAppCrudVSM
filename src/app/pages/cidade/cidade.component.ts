@@ -31,4 +31,31 @@ export class CidadeComponent implements OnInit {
     this.getCidades();
   }
 
+  atualizarCidades(){
+
+  }
+
+  criarCidades(f: NgForm){
+    console.log(f.value);
+    if(f != undefined){
+      if(f.value != undefined){
+        var ci: Cidade = {
+          cidadeNome: f.value.nameCidadeNome,
+          cidadeUf: f.value.nameCidadeUf,
+          cidadeDesativada: false
+        }
+        console.log(ci);
+        this.cidService.saveCidade(ci).subscribe(()=>{
+          this.cleanForm(f);
+        });
+      }
+    }
+  }
+
+  cleanForm(form: NgForm) {
+    this.getCidades();
+    form.resetForm();
+    this.cidade = {} as Cidade;
+  }
+
 }

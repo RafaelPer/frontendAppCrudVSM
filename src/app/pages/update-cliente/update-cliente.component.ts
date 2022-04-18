@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cidade } from 'src/app/models/cidade';
 import { Cliente } from 'src/app/models/cliente';
-import { DesactiveItens } from 'src/app/models/desactive-itens';
 import { NgForm } from '@angular/forms';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { CidadesService } from 'src/app/services/cidades.service';
@@ -38,7 +37,7 @@ export class UpdateClienteComponent implements OnInit {
   }
 
   getCidades() {
-    this.cidService.findAllCidades().subscribe((cid: Cidade[]) => {
+    this.cidService.findAllCidadesAtivadas().subscribe((cid: Cidade[]) => {
       this.cidades = cid;
     });
   }

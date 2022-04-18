@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateCidadeComponent } from './pages/update-cidade/update-cidade.component';
 import { UpdateClienteComponent } from './pages/update-cliente/update-cliente.component';
+import { VisualizarClienteComponent } from './pages/visualizar-cliente/visualizar-cliente.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { UpdateClienteComponent } from './pages/update-cliente/update-cliente.co
     HomeComponent,
     UpdateCidadeComponent,
     UpdateClienteComponent,
+    VisualizarClienteComponent,
   ],
   imports: [
     BrowserModule,

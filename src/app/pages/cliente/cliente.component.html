@@ -20,6 +20,7 @@
                 <td>{{c.clienteDesativado == null ? '' : c.clienteDesativado == true ? 'SIM' : 'NÃO'}}</td>
                 <td>
                   <button type="button" class="btn btn-warning btn-sm" style="margin: 10px;" [disabled] = "c.clienteDesativado == true ? true : false" [routerLink]="['/updateCliente', c.clienteIdPk]">Editar</button>
+                  <button type="button" class="btn btn-info btn-sm" style="margin: 10px;" [disabled] = "c.clienteDesativado == true ? true : false" [routerLink]="['/visualizarCliente', c.clienteIdPk]">Visualizar</button>
                   <button type="button" class="btn btn-dark btn-sm ml-1" (click)="desativarCliente(c)">Ativar / Desativar</button>
                 </td>
               </tr>
